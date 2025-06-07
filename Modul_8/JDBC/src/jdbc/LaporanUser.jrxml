@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanUserData" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="28" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#000000" fontName="Times New Roman" fontSize="18" isBold="true"/>
+	<style name="Column header" forecolor="#000000" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="11"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#EFEFEF"/> <!-- Warna latar baris genap sedikit diubah -->
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     u.ID_USER AS ID_PENGGUNA,
+     l.LEVEL AS NAMA_LEVEL,
+     u.NAMA_USER AS NAMA_PENGGUNA,
+     CASE u.JK
+        WHEN 'L' THEN 'Laki-laki'
+        WHEN 'P' THEN 'Perempuan'
+        ELSE u.JK
+     END AS JENIS_KELAMIN,
+     u.NOPE AS NOMOR_HP,
+     u.USERNAME AS AKUN_PENGGUNA,
+     u.PASSWORD AS KATA_SANDI  /* Sebaiknya password tidak ditampilkan di report, tapi ini sesuai query awal */
+FROM
+     tbl_user u
+INNER JOIN
+     tbl_level l ON u.ID_LEVEL = l.ID_LEVEL
+ORDER BY
+     u.ID_USER ASC]]>
+	</queryString>
+	<field name="ID_PENGGUNA" class="java.lang.String"/>
+	<field name="NAMA_LEVEL" class="java.lang.String"/>
+	<field name="NAMA_PENGGUNA" class="java.lang.String"/>
+	<field name="JENIS_KELAMIN" class="java.lang.String"/>
+	<field name="NOMOR_HP" class="java.lang.String"/>
+	<field name="AKUN_PENGGUNA" class="java.lang.String"/>
+	<field name="KATA_SANDI" class="java.lang.String"/>
+
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="802" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PT. SELALU SEMANGAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="40" width="802" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LAPORAN DATA PENGGUNA APLIKASI KASIR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<textField pattern="EEEEE, dd MMMMM yyyy HH:mm:ss">
+				<reportElement style="Detail" x="0" y="0" width="200" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="Column header" x="2" y="5" width="80" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ID User]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="85" y="5" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama User]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="188" y="5" width="80" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Level]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="271" y="5" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="374" y="5" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No. Handphone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="497" y="5" width="150" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Username]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="650" y="5" width="150" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Password]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="20"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="2" y="2" width="80" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ID_PENGGUNA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="85" y="2" width="100" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{NAMA_PENGGUNA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="188" y="2" width="80" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{NAMA_LEVEL}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="271" y="2" width="100" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{JENIS_KELAMIN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="374" y="2" width="120" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{NOMOR_HP}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="497" y="2" width="150" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{AKUN_PENGGUNA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" x="650" y="2" width="150" height="15"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{KATA_SANDI}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="682" y="2" width="80" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}+" dari"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="762" y="2" width="40" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
