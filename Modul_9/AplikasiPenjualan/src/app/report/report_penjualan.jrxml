@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_penjualan" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Zebra" mode="Opaque" backcolor="#F0F0F0">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFFFF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+		 p.nota,
+		 p.tgl_penjualan,
+		 b.nama_barang,
+		 p.jmlh_barang_jual,
+		 p.total_jual,
+		 u.nama_user
+	 FROM
+		 tbl_penjualan p
+	 JOIN
+		 tbl_barang b ON p.kd_barang = b.kd_barang
+	 JOIN
+		 tbl_user u ON p.id_user = u.id_user
+	 ORDER BY
+		 p.tgl_penjualan DESC, p.nota DESC]]>
+	</queryString>
+	<field name="nota" class="java.lang.String"/>
+	<field name="tgl_penjualan" class="java.sql.Date"/>
+	<field name="nama_barang" class="java.lang.String"/>
+	<field name="jmlh_barang_jual" class="java.lang.Integer"/>
+	<field name="total_jual" class="java.lang.Long"/>
+	<field name="nama_user" class="java.lang.String"/>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Transaksi Penjualan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PT Selalu Semangat]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="55" width="802" height="1"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="130" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[No. Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="130" y="0" width="100" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="230" y="0" width="222" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="452" y="0" width="60" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="512" y="0" width="140" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[Total Jual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="652" y="0" width="150" height="25" backcolor="#CCCCCC"/>
+				<box><pen lineWidth="0.5"/></box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true"/></textElement>
+				<text><![CDATA[Kasir Bertugas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField><reportElement style="Zebra" x="0" y="0" width="130" height="20"/><box leftPadding="5"><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{nota}]]></textFieldExpression></textField>
+			<textField pattern="dd-MM-yyyy"><reportElement style="Zebra" x="130" y="0" width="100" height="20"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{tgl_penjualan}]]></textFieldExpression></textField>
+			<textField><reportElement style="Zebra" x="230" y="0" width="222" height="20"/><box leftPadding="5"><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression></textField>
+			<textField><reportElement style="Zebra" x="452" y="0" width="60" height="20"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{jmlh_barang_jual}]]></textFieldExpression></textField>
+			<textField pattern="#,##0"><reportElement style="Zebra" x="512" y="0" width="140" height="20"/><box rightPadding="5"><pen lineWidth="0.5"/></box><textElement textAlignment="Right" verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{total_jual}]]></textFieldExpression></textField>
+			<textField><reportElement style="Zebra" x="652" y="0" width="150" height="20"/><box leftPadding="5"><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{nama_user}]]></textFieldExpression></textField>
+		</band>
+	</detail>
+</jasperReport>
