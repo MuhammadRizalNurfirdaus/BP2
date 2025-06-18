@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerUser.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerSupplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormSupplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ControllerPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/main/Main.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/ModelTabelBarang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/Supplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ImplementSupplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/ModelTabelPembelian.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/Barang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/DaoSupplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormLogin.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/ModelTabelSupplier.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/User.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/Penjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerLogin.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormRegister.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/aplikasipenjualan/AplikasiPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/DaoPembelian.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormMenuUtama.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormUser.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerBarang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/ModelTabelPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormPembelian.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/DaoUser.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/DaoBarang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerRegister.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ImplementPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/Pembelian.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/DaoPenjualan.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ImplementBarang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ImplementUser.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/view/FormBarang.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/model/ModelTabelUser.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/controller/ControllerPembelian.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/koneksi/Koneksi.java</file>
+            <file>file:/D:/Semester%204/BP2/Modul_9/AplikasiPenjualan/src/app/dao/ImplementPembelian.java</file>
+        </group>
+    </open-files>
+</project-private>
