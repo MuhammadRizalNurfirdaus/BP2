@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanDataPembelian" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#F2F2F2"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+             tbl_pembelian.`kd_pembelian` AS kd_pembelian,
+             tbl_pembelian.`kd_barang` AS kd_barang,
+             tbl_pembelian.`id_user` AS id_user,
+             tbl_pembelian.`tgl_pembelian` AS tgl_pembelian,
+             tbl_pembelian.`jmlh_beli` AS jmlh_beli,
+             tbl_pembelian.`total_beli` AS total_beli
+        FROM
+             `tbl_pembelian` tbl_pembelian]]>
+	</queryString>
+	<field name="kd_pembelian" class="java.lang.String"/>
+	<field name="kd_barang" class="java.lang.String"/>
+	<field name="id_user" class="java.lang.String"/>
+	<field name="tgl_pembelian" class="java.sql.Date"/>
+	<field name="jmlh_beli" class="java.lang.Integer"/>
+	<field name="total_beli" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan Data Pembelian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="35" width="802" height="22"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Toko Sejahtera Selalu]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" backcolor="#3399FF"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="160" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Kode Pembelian]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="160" y="0" width="120" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Kode Barang]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="280" y="0" width="120" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[ID User]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="400" y="0" width="150" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tanggal Pembelian]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="550" y="0" width="102" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Jumlah Beli]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="652" y="0" width="150" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Total Beli]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="20"/>
+				<textField>
+					<reportElement style="Detail" x="5" y="0" width="155" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{kd_pembelian}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="160" y="0" width="120" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{kd_barang}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="280" y="0" width="120" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{id_user}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="400" y="0" width="150" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{tgl_pembelian}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="550" y="0" width="102" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{jmlh_beli}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement style="Detail" x="652" y="0" width="145" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{total_beli}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" backcolor="#3399FF"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="762" y="3" width="40" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="682" y="3" width="80" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
