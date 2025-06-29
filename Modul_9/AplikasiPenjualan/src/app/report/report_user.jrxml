@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanDataUser" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#F2F2F2"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+             tbl_user.`id_user` AS id_user,
+             tbl_user.`id_level` AS id_level,
+             tbl_user.`nama_user` AS nama_user,
+             tbl_user.`jk` AS jk,
+             tbl_user.`nope` AS nope,
+             tbl_user.`username` AS username
+        FROM
+             `tbl_user` tbl_user]]>
+	</queryString>
+	<field name="id_user" class="java.lang.String"/>
+	<field name="id_level" class="java.lang.Integer"/>
+	<field name="nama_user" class="java.lang.String"/>
+	<field name="jk" class="java.lang.String"/>
+	<field name="nope" class="java.lang.String"/>
+	<field name="username" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan Data Pengguna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="35" width="802" height="22"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Toko Sembako Berkah]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" backcolor="#9933CC"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="90" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[ID User]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="90" y="0" width="60" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[ID Level]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="150" y="0" width="200" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Nama Pengguna]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="350" y="0" width="40" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[JK]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="390" y="0" width="160" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[No. Telepon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="550" y="0" width="120" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Username]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="670" y="0" width="132" height="25"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Password]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="20"/>
+				<textField>
+					<reportElement style="Detail" x="5" y="0" width="85" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{id_user}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="90" y="0" width="60" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{id_level}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="155" y="0" width="195" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{nama_user}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="350" y="0" width="40" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="395" y="0" width="155" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{nope}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="555" y="0" width="115" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="670" y="0" width="132" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["******"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" backcolor="#9933CC"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="762" y="3" width="40" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="682" y="3" width="80" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
